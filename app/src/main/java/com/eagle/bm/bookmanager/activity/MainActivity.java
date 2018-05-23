@@ -1,5 +1,6 @@
 package com.eagle.bm.bookmanager.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -48,13 +49,16 @@ public class MainActivity extends AppCompatActivity {
 
         sampleRecyclerAdapter.setBookList(search.getFileList());
 
-        Button addButton = findViewById(R.id.activity_main_add);
-        addButton.setOnClickListener(v -> sampleRecyclerAdapter.addItem(0));
-
         Button backButton = findViewById(R.id.activity_main_back);
         backButton.setOnClickListener(v -> {
             sampleRecyclerAdapter.setBookList(search.back());
             pathText.setText(search.getPath());
+        });
+
+        Button addButton = findViewById(R.id.activity_main_add);
+        addButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
         });
 
 
